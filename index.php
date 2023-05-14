@@ -5,6 +5,7 @@ include_once('conn.php');
 if(isset($_GET['delete'])){
     $id = (int)$_GET['delete'];
     $pdo->exec("DELETE FROM alunos WHERE id=$id");
+    echo "<br>deletado: ".$id;
 
 }
 
