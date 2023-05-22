@@ -1,3 +1,8 @@
+<?php
+include_once '../conn.php';
+session_start();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,14 +38,14 @@
             <h2 class="text-center">Área exclusiva para gestores</h2>
           </div>
           <div class="card-body">
-            <form>
+            <form method="post" action="index.php">
               <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Informe seu email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Informe seu email">
               </div>
               <div class="form-group">
                 <label for="password"><i class="fas fa-lock"></i> Senha:</label>
-                <input type="password" class="form-control" id="password" placeholder="Informe sua senha">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Informe sua senha">
               </div>
               <button type="submit" class="btn btn-success btn-block"><i class="fas fa-sign-in-alt"></i> Entrar</button>
             </form>
