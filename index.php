@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -33,8 +33,8 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Sobre</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Fale conosco</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="./gestao">Gestão</a></li>
-                    
-                    
+
+
                 </ul>
             </div>
         </div>
@@ -67,6 +67,26 @@
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
+            <?php
+            include_once 'conn.php';
+            $sql = $pdo->prepare("SELECT * FROM post");
+            $sql->execute();
+            $alunos = $sql->fetchAll();
+            echo '<div class="row">';
+            foreach ($alunos as $a => $linha) {
+                echo '<div class="col-md-6">';
+                echo '<div class="card m-2">';
+                echo '<div class="card-body">';
+                echo '<h3 class="card-title">' . $linha['titulo'] . '</h3>';
+                echo '<p class="card-text">' . $linha['conteudo'] . '</p>';
+                echo '<ion-icon name="globe-outline"></ion-icon> '.$linha['data'];
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            echo '</div>';
+
+            ?>
     </section>
     <section class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
@@ -395,6 +415,9 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
