@@ -91,23 +91,49 @@ if (isset($_POST['titulo'])) {
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Título do Modal</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Gerenciar posts</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Conteúdo do modal...</p>
+                                            <?php
+                                            $sql = $pdo->prepare("SELECT * FROM post");
+                                            $sql->execute();
+                                            $alunos = $sql->fetchAll();
+                                            foreach ($alunos as $a => $linha) {
+                                                echo '<div class="row mb-3">';
+                                                echo '<div class="col-12 d-flex align-items-center">'; // Adiciona as classes "d-flex" e "align-items-center"
+                                                echo '<table class="table table-striped">';
+                                                echo '<tr>';
+                                                
+                                                echo '<a href="?delete=' . $linha['id'] . '"><ion-icon name="trash-outline"></ion-icon></a>';
+                                                echo '<td>' . $linha['titulo'] . '</td>';
+                                                echo '<td>';
+                                                
+                                                echo '</td>';
+                                                echo '</tr>';
+                                                echo '</table>';
+                                                echo '</div>';
+                                                echo '</div>';
+                                            }
+                                            ?>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        </div>
+
+
+
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     </div>
